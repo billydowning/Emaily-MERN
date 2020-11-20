@@ -7,11 +7,11 @@ const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
+});
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id).then((user) => {
-      done(null, user);
-    });
+passport.deserializeUser((id, done) => {
+  User.findById(id).then((user) => {
+    done(null, user);
   });
 });
 
@@ -37,3 +37,6 @@ passport.use(
     }
   )
 );
+
+// can install FB, Github, Twitter Oauth strategies here similar to above.
+// must also define authRoutes for each additional strategy as well.

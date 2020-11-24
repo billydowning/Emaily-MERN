@@ -25,7 +25,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="ui secondary pointing menu">
-        <Link to="/" className="item">
+        <Link to={this.props.auth ? "/surveys" : "/"} className="item">
           Emaily
         </Link>
         <div className="right menu">{this.renderAuth()}</div>

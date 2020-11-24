@@ -1,14 +1,10 @@
-import { SIGN_IN, SIGN_OUT } from "./types";
+import axios from "axios";
+import { FETCH_USER } from "./types";
 
-export const signIn = (userId) => {
-  return {
-    type: SIGN_IN,
-    payload: userId,
-  };
-};
+export const fetchUser = () => {
+  return async (dispatch) => {
+    const res = await axios.get("/api/current_user");
 
-export const signOut = () => {
-  return {
-    type: SIGN_OUT,
+    dispatch({ type: FETCH_USER, payload: res.data });
   };
 };

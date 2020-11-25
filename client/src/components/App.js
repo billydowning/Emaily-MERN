@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Landing from "./Landing";
+import Success from "./Success";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -23,6 +24,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/surveys" component={Dashboard} />
               <Route path="/surveys/new" component={SurveyNew} />
+              <Route exact path="/success" component={Success} />
             </Switch>
           </div>
         </BrowserRouter>

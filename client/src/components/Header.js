@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Payments from "./Payments";
+import Stripe from "./Stripe";
 
 class Header extends React.Component {
   renderAuth() {
@@ -17,7 +18,7 @@ class Header extends React.Component {
       default:
         return (
           <div>
-            <Payments />
+            <Stripe />
             <a
               href="/api/logout"
               className="ui primary button"

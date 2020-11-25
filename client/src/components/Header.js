@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Payments from "./Payments";
 
 class Header extends React.Component {
   renderAuth() {
@@ -15,9 +16,16 @@ class Header extends React.Component {
         );
       default:
         return (
-          <a href="/api/logout" className="ui primary button">
-            Logout
-          </a>
+          <div>
+            <Payments />
+            <a
+              href="/api/logout"
+              className="ui primary button"
+              style={{ margin: "10px" }}
+            >
+              Logout
+            </a>
+          </div>
         );
     }
   }

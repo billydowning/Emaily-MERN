@@ -22,9 +22,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app);
-require("./routes/stripeRoutes")(app);
-
-app.listen(4242, () => console.log("Running on port 4242"));
+//require("./routes/stripeRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

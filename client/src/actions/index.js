@@ -11,7 +11,7 @@ export const fetchUser = () => {
 
 export const handleToken = (token) => {
   return async (dispatch) => {
-    const res = await axios.get("api/stripe", token);
+    const res = await axios.get("/api/stripe", token);
 
     dispatch({ type: FETCH_USER, payload: res.data });
   };

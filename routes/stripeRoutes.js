@@ -27,11 +27,6 @@ module.exports = (app) => {
     res.json({ id: session.id });
   });
 
-  const fulfillOrder = (session) => {
-    // TODO: fill me in
-    console.log("Fulfilling order", session);
-  };
-
   app.post(
     "/webhook",
     bodyParser.raw({ type: "application/json" }),
@@ -48,10 +43,8 @@ module.exports = (app) => {
       }
       // Handle the checkout.session.completed event
       if (event.type === "checkout.session.completed") {
-        const session = event.data.object;
-        console.log(session);
-        // Fulfill the purchase...
-        fulfillOrder(session);
+        const credits = event.data.object.amount_total;
+        console.log(credits);
       }
 
       response.status(200);

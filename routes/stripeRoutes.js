@@ -28,24 +28,13 @@ module.exports = (app) => {
   });
 
   app.post(
-    "/webhook",
+    "/api/stripe",
     bodyParser.raw({ type: "application/json" }),
     (request, response) => {
       const payload = request.body;
       const sig = request.headers["stripe-signature"];
 
-      let event;
-
-      try {
-        event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
-      } catch (err) {
-        return response.status(400).send(`Webhook Error: ${err.message}`);
-      }
-      // Handle the checkout.session.completed event
-      if (event.type === "checkout.session.completed") {
-        const credits = event.data.object.amount_total;
-        console.log(credits);
-      }
+      console.log(payload.data.object.amount_total);
 
       response.status(200);
     }

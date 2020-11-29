@@ -18,7 +18,7 @@ class Header extends React.Component {
       default:
         return (
           <div>
-            <Stripe />
+            <Payments />
             <a
               href="/api/logout"
               className="ui primary button"

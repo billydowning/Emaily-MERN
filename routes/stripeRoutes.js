@@ -2,9 +2,10 @@ const keys = require("../config/keys");
 const stripe = require("stripe")(keys.stripeSecretKey);
 const bodyParser = require("body-parser");
 const endpointSecret = keys.stripeWebHookKey;
+const requireLogin = require("../middlewares/requireLogin");
 
 module.exports = (app) => {
-  app.post("/create-checkout-session", async (req, res) => {
+  app.post("/create-checkout-session", requireLogin, async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -25,18 +26,9 @@ module.exports = (app) => {
     });
 
     res.json({ id: session.id });
+    req.user.credits += 5;
+    const user = await req.user.save();
+
+    res.send(user);
   });
-
-  app.post(
-    "/api/stripe",
-    bodyParser.raw({ type: "application/json" }),
-    (request, response) => {
-      const payload = request.body;
-      const sig = request.headers["stripe-signature"];
-
-      console.log(payload.data.object.amount_total);
-
-      response.status(200);
-    }
-  );
 };

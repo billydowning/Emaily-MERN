@@ -29,5 +29,3 @@ require("./routes/stripeRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-
-app.listen(4242, () => console.log("Running on port 4242"));

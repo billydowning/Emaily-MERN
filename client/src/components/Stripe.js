@@ -30,7 +30,7 @@ function Stripe() {
     }
   };
   return (
-    <button role="link" onClick={handleClick} className="ui primary button">
+    <button role="link" onClick={handleClick} className="ui red button">
       Add Credits
     </button>
   );

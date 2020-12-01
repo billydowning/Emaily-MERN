@@ -1,7 +1,6 @@
 const keys = require("../config/keys");
 const stripe = require("stripe")(keys.stripeSecretKey);
 const bodyParser = require("body-parser");
-const endpointSecret = keys.stripeWebHookKey;
 const requireLogin = require("../middlewares/requireLogin");
 
 module.exports = (app) => {

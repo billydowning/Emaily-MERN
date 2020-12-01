@@ -18,7 +18,7 @@ class Header extends React.Component {
       default:
         return (
           <div>
-            <Stripe />
+            <Payments />
             <p href="" className="ui primary button" style={{ margin: "10px" }}>
               Credits: {this.props.auth.credits}
             </p>

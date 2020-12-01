@@ -20,8 +20,8 @@ module.exports = (app) => {
         },
       ],
       mode: "payment",
-      success_url: "/success",
-      cancel_url: "/success",
+      success_url: "https://blooming-caverns-09251.herokuapp.com/success",
+      cancel_url: "https://blooming-caverns-09251.herokuapp.com/success",
     });
 
     res.json({ id: session.id });

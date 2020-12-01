@@ -1,7 +1,7 @@
 module.exports = (req, res, next) => {
   if (req.user.credits < 1) {
     return res
-      .status(401)
+      .status(403)
       .send({ error: "You must purchase more credits to proceed." });
   }
 

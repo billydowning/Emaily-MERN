@@ -19,7 +19,7 @@ class Mailer extends helper.Mail {
 
   formatAddresses(recipients) {
     return recipients.map(({ email }) => {
-      return new helper.Email();
+      return new helper.Email(email);
     });
   }
 
@@ -33,7 +33,8 @@ class Mailer extends helper.Mail {
 
   addRecipients() {
     const personalize = new helper.Personalization();
-    this.recipents.forEach((recipient) => {
+
+    this.recipients.forEach((recipient) => {
       personalize.addTo(recipient);
     });
     this.addPersonalization(personalize);
@@ -45,6 +46,8 @@ class Mailer extends helper.Mail {
       path: "/v3/mail/send",
       body: this.toJSON(),
     });
+    const response = this.sgApi.API(request);
+    return response;
   }
 }
 

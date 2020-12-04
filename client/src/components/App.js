@@ -6,7 +6,7 @@ import Success from "./Success";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-const Dashboard = () => <h2>Dashboard</h2>;
+import Dashboard from "./Dashboard";
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 class App extends React.Component {
@@ -23,7 +23,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/surveys" component={Dashboard} />
-              <Route path="/surveys/new" component={SurveyNew} />
+              <Route exact path="/surveys/new" component={SurveyNew} />
               <Route exact path="/success" component={Success} />
             </Switch>
           </div>

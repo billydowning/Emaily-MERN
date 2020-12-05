@@ -30,10 +30,18 @@ class SurveyForm extends React.Component {
       <div>
         <form
           onSubmit={this.props.handleSubmit((values) => console.log(values))}
+          className="ui form"
         >
           {this.renderFields()}
-          <button type="submit" className="ui primary button">
+          <button
+            type="submit"
+            className="ui right floated red button"
+            style={{ margin: "5px" }}
+          >
             Submit
+          </button>
+          <button className="ui right floated button" style={{ margin: "5px" }}>
+            Cancel
           </button>
         </form>
       </div>

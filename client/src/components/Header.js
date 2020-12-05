@@ -25,7 +25,7 @@ class Header extends React.Component {
             <a
               href="/api/logout"
               className="ui primary button"
-              style={{ margin: "10px" }}
+              //style={{ margin: "10px" }}
             >
               Logout
             </a>

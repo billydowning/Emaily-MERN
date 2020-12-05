@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import SurveyField from "./SurveyField";
+import { Link } from "react-router-dom";
 
 const FIELDS = [
   { label: "Survey Title", name: "title" },
@@ -38,17 +39,32 @@ class SurveyForm extends React.Component {
             className="ui right floated red button"
             style={{ margin: "5px" }}
           >
-            Submit
+            Next
           </button>
-          <button className="ui right floated button" style={{ margin: "5px" }}>
+          <Link
+            to="/surveys"
+            className="ui left floated button"
+            style={{ margin: "5px" }}
+          >
             Cancel
-          </button>
+          </Link>
         </form>
       </div>
     );
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = "You must provide a title.";
+  }
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: "surveyForm",
 })(SurveyForm);

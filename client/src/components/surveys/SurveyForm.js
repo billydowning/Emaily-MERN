@@ -5,9 +5,17 @@ import SurveyField from "./SurveyField";
 import { Link } from "react-router-dom";
 
 const FIELDS = [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject Line", name: "subject" },
-  { label: "Email Body", name: "body" },
+  {
+    label: "Survey Title",
+    name: "title",
+    noValueError: "Please provide a title",
+  },
+  {
+    label: "Subject Line",
+    name: "subject",
+    noValueError: "Please provide a subject",
+  },
+  { label: "Email Body", name: "body", noValueError: "Please provide a body" },
   { label: "Recipient List", name: "emails" },
 ];
 
@@ -57,9 +65,11 @@ class SurveyForm extends React.Component {
 function validate(values) {
   const errors = {};
 
-  if (!values.title) {
-    errors.title = "You must provide a title.";
-  }
+  _.each(FIELDS, ({ name, noValueError }) => {
+    if (!values[name]) {
+      errors[name] = noValueError;
+    }
+  });
 
   return errors;
 }

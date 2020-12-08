@@ -52,7 +52,7 @@ class SurveyForm extends React.Component {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || "");
+  errors.recipients = validateEmails(values.recipients || "");
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {

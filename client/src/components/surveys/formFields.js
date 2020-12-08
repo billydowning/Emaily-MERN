@@ -12,7 +12,7 @@ const formFields = [
   { label: "Email Body", name: "body", noValueError: "Please provide a body" },
   {
     label: "Recipient List",
-    name: "emails",
+    name: "recipients",
     noValueError: "Please provide a valid email",
   },
 ];

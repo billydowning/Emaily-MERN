@@ -14,6 +14,14 @@ module.exports = (app) => {
     res.send("Thanks for your feedback!");
   });
 
+  app.get("/api/surveys", requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      receipients: false,
+    });
+
+    res.send(surveys);
+  });
+
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
 
